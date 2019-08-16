@@ -19,3 +19,6 @@ add_library(auread STATIC src/input/decode_audio_file.c)
 
 add_executable(read_audio_file test/input/main-test.c)
 target_link_libraries(read_audio_file avcodec avformat avutil swresample auread)
+
+add_executable(freq_detect src/dft/dft.c test/main-freq-detect.c)
+target_link_libraries(freq_detect m avcodec avformat avutil swresample auread)

@@ -20,6 +20,20 @@ note_pitch_t *create_pitch_array(float baseA4) {
     return pitch_array;
 }
 
+float complex simple_single_harmonic(float *samples, int count, int rate, float freq) {
+    double im = 0.0, re = 0.0;
+    
+    for (int i = 0; i < count; i++) {
+        float v = samples[i];
+        float angle = 2 * M_PI * i * freq / rate;
+        
+        re += cos(angle) * v;
+        im -= sin(angle) * v; 
+    }
+    
+    return re + im * I;
+}
+
 int *check_tones(const int sample_rate, const float* data, const int size) {
     return 0;
 }

@@ -10,6 +10,9 @@ enable_language(ASM_NASM)
 #set_source_files_properties(test/nasm/test.asm PROPERTIES COMPILE_FLAGS "-g -Fdwarf")
 #set(CMAKE_CXX_STANDARD 11)
 
+add_executable(test_freq src/dft/dft.c test/dft/common-test.c)
+target_link_libraries(test_freq m)
+
 add_executable(test1 test/nasm/test.asm test/nasm/main.cpp)
 
 add_library(auread STATIC src/input/decode_audio_file.c)
